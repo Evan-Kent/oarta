@@ -1,8 +1,13 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { fetchWrapper } from './api';
+import './models/Movie';
 
 function App() {
+  console.log("process env " + process.env.REACT_APP_LOTR_API_KEY);
+  let data = fetchWrapper('/movie', { 'Authorization': `Bearer ${process.env.REACT_APP_LOTR_API_KEY}`})
+  console.log(data)
   return (
     <div className="App">
       <header className="App-header">
