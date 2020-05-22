@@ -1,28 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+//import logo from './logo.svg';
+import thering from './thering.png';
 import './App.css';
-import { fetchWrapper } from './api';
+import { getMovies } from './utilities/api';
 import './models/Movie';
 
 function App() {
-  console.log("process env " + process.env.REACT_APP_LOTR_API_KEY);
-  let data = fetchWrapper('/movie', { 'Authorization': `Bearer ${process.env.REACT_APP_LOTR_API_KEY}`})
-  console.log(data)
+  const [movies, setMovies] = useState({})
+  
+  useEffect(() => {
+    let ignore = false;
+    if (!ignore) getMovies(setMovies)
+    return () => { ignore = true; }
+  }, [])
+  console.log(movies)
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={thering} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div>
+          hi
+        </div>
       </header>
     </div>
   );
