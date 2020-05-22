@@ -1,7 +1,3 @@
-
-const auth = { 'Authorization': `Bearer ${process.env.REACT_APP_LOTR_API_KEY}` }
-const url = 'https://the-one-api.herokuapp.com/v1'
-
 function json(response) { return response.json() }
 
 function status(response) 
@@ -11,30 +7,95 @@ function status(response)
   else return Promise.reject(new Error(response.statusText))
 }
 
-function fetchWrapper(endpoint, resource, headers, _method) {
+function get(resource) {
+  const auth = { 'Authorization': `Bearer ${process.env.REACT_APP_LOTR_API_KEY}` }
+  const url = 'https://the-one-api.herokuapp.com/v1'
   return new Promise((resolve, reject) => {
-    fetch(endpoint + resource, { method: _method, headers: headers })
+    fetch(url + resource, { method: 'GET', headers: auth })
       .then(status)
       .then(json)
       .then(
-        data => {
-          //console.log("Response successful", data)
-          resolve(data)
-        },
-        error => {
-          //console.log("Request failed with error: ", error)
-          reject(error)
-        }
+        data => resolve(data),
+        error => reject(error)
       )
   })
 }
 
-async function getMovies(setData) {
-  let result = await fetchWrapper(url, '/movie', auth, 'GET') 
-  setData(result)
+async function getBooks(setBooks) {
+  setBooks(await get('/book'))
 }
 
-export 
+async function getBook(id)
 {
-  getMovies
+  return await get(`/book/${id}`)
 }
+
+async function getBookChapters(bookId)
+{
+  return await get(`/book/${bookId}/chapter`)
+}
+
+async function getChapters(setChapters) {
+  setChapter(await get(`/chapter`))
+}
+
+async function getChapter(id)
+{
+  return await get(`/chapter/${id}`)
+}
+
+async function getCharacters(setCharacters) {
+  setCharacters(await get(`/character`))
+}
+
+async function getCharacter(id)
+{
+  return await get(`/character/${id}`)
+}
+
+async function getCharacterQuotes(characterId)
+{
+  return await get(`/character/${characterId}/quote`)
+}
+
+async function getMovies(setMovies) {
+  setMovies(await get('/movie'))
+}
+
+async function getMovie(id)
+{
+  return await get(`/movie/${id}`)
+}
+
+async function getMovieQuotes(movieId)
+{
+  return await get(`/movie/${movieId}/quote`)
+}
+
+async function getQuotes(setQuotes) {
+  setQuotes(await get('/quote'))
+}
+
+async function getQuote(id)
+{
+  return await get(`/quote/${id}`)
+}
+
+let api =
+{
+  getBooks,
+  getBook,
+  getBookChapters,
+  getChapters,
+  getChapter,
+  getCharacters,
+  getCharacter,
+  getCharacterQuotes,
+  getMovie,
+  getMovies,
+  getMovieQuotes,
+  getQuotes,
+  getQuote
+}
+
+export default api;
