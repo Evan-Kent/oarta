@@ -1,7 +1,11 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+
 :root {
   --black: #02111B;
   --grey: #313638;
-  --sunny: #FFE084;
+  --sunny: rgb(255, 224, 132);
   --bluegreen: #9EEEE0;
   --platinum: #E5F5D7;
   --darkgreen: #106420;
@@ -16,49 +20,70 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-#root {
-  min-height: 100vh;
-  width: 100vw;
-}
-
-.home {
-  width: 100%;
-  background-color: var(--black);
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: flex-start;
 }
 
 .navigation 
 {
   position: fixed;
+  display: block;
   top: 0;
+  left: -160px;
   height: 100vh;
-  width: 120px;
+  width: 275px;
   z-index: 20;
   background: var(--grey);
   border-right: 1px var(--sunny) solid;
   grid-area: nav;
-  transition: width .3s cubic-bezier(1,-0.03,.57,1.55);
+  transition: all .45s cubic-bezier(0.8, 0, 0.175, 1);
   overflow: hidden;
   cursor: pointer;
-  box-shadow: 3px 5px 10px rgba(0,0,0,.6);
+  box-shadow: 2px 2px 5px rgba(0,0,0,.6);
 }
 .navigation:hover {
-  width: 250px;
+	position: fixed;
+	left: 0;
+	top: 0;
 }
+
+.navigation a {
+  text-decoration: none;
+  color: var(--platinum);
+}
+
+.navigation ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-y: auto;
+}
+
+.navigation li {
+  padding: 10px 40px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navigation li .nav-icon {
+  font-size: 2em;
+  height: px;
+  color: var(--bluegreen);
+}
+.navigation li:hover .nav-icon {
+  color: var(--sunny);
+}
+
+.navigation li a {
+  color: var(--bluegreen);
+}
+.navigation li:hover a {
+  color: var(--sunny);
+}
+
 
 .app-canvas
 {
@@ -67,12 +92,43 @@ code {
       radial-gradient(circle at 50% 50%, rgba(0,0,0), transparent 100%);
   padding-left: 150px;
   min-height: 100vh;
+  height: 300vh;
   overflow: hidden;
+  display:flex;
+  flex-flow: column nowrap;
+  align-items: center;
 }
 
-.logo {
+.home {
+  width: 100%;
+  background-color: var(--black);
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+}
+
+.home .logo {
   height: 50px;
-  margin: 10px 10px;
+  margin: 10px 10px 10px 30px;
+}
+
+.home .title {
+  margin-top: 13px;
+  padding-left: 30px;
+  transition: all .3s ease;
+  text-decoration: none;
+  font-family: 'Cinzel';
+  font-weight: 400;
+  font-size: 2em;
+  text-transform: lowercase;
+  color: var(--black);
+  letter-spacing:3px;
+  text-shadow:  0px 0px 1px var(--sunny), 
+                0px 0px 1px var(--sunny), 
+                0px 0px 1px var(--sunny), 
+                0px 0px 2px var(--sunny), 
+                0px 0px 2px var(--sunny),
+                0px 0px 3px var(--sunny);
 }
 
 .footer {
@@ -80,51 +136,117 @@ code {
   border: 1px orange solid;
 }
 
-.title {
-  margin-top: 13px;
-  margin-left: 30px;
-  transition: all .3s ease;
-  text-decoration: none;
-  font-family: 'Roboto';
-  font-weight: 100;
+/* Login Card */
+.login-card {
+  padding-top: 25px;
+  text-align: center;
+}
+.login-card .card-container {
+  background-color: var(--grey);
+  border: 1px solid var(--sunny);
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  width: 400px;
+}
+.login-card .logo {
+  height: 50px;
+  margin-top: -25px;
+}
+.login-card h2 {
+  margin-top: 5px;
   font-size: 2em;
-  text-transform: lowercase;
-  color: var(--black);
-  letter-spacing:3px;
-  text-shadow: 0px 0px 1px var(--platinum), 0px 0px 1px var(--platinum), 0px 0px 1px var(--platinum), 0px 0px 3px var(--platinum), 0px 0px 2px var(--platinum), 0px 0px 2px var(--platinum);
+  font-family: Cinzel, serif;
+  text-transform: uppercase;
+  color: white;
+}
+.login-card form {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+.login-card input[type=text], 
+.login-card input[type=password] {
+  width: 300px;
+  display: block;
+  margin-top: 20px;
+  border: 1px solid var(--sunny);
+  padding: 10px 20px;
+  font-size: 20px;
+  transition-duration: .3s;
+  text-align: center;
+}
+.login-card input[type=text]:focus, 
+.login-card input[type=password]:focus {
+  width: 350px;
 }
 
-@keyframes easeOutElastic {
-	0% {
-		transform: translateX(0%);
-	}
+.login-card button[type=submit] {
+  border: 5px solid var(--sunny);
+  display: block;
+  padding: 10px 70px;
+  margin: 30px;
+  color: var(--black);
+  font-size: 1.25em;
+  font-weight: bold;
+  background-color: var(--sunny);
+}
+.login-card button[type="submit"]:hover {
+  background-color: rgba(255, 224, 132, .8);
+}
 
-	16% {
-		transform: translateX(-132.27%);
-	}
+.login-card .forgot-link {
+  text-decoration: none;
+  color: black;
+  font-size: .75em;
+}
+.login-card .forgot-link:visited {
+  color: black;
+}
 
-	28% {
-		transform: translateX(-86.88%);
-	}
-
-	44% {
-		transform: translateX(-104.63%);
-	}
-
-	59% {
-		transform: translateX(-98.36%);
-	}
-
-	73% {
-		transform: translateX(-100.58%);
-	}
-
-	88% {
-		transform: translateX(-99.8%);
-	}
-
-	100% {
-		transform: translateX(-100%);
-	}
-
+/* App card */
+.card {
+  margin: 20px;
+  width: 400px;
+}
+.card .card-container {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  /* Required to make elements draggable in old WebKit */
+  -khtml-user-drag: element;
+  -webkit-user-drag: element;
+  border: 1px solid var(--grey);
+  background-color: white;
+  padding: 5px;
+}
+.card-container header {
+  cursor: move;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(200, 200, 200, .2)
+}
+.card-container h3 {
+  margin: 0;
+  padding-left: 20px
+}
+.card-container header span {
+  height: 100%;
+  border: 1px solid red;
+  vertical-align: center;
+}
+.card-container .config {
+  cursor: pointer;
+  border: 0;
+  background-color: transparent;
+  color: var(--grey);
+}
+.card-container .config:hover {
+  color: var(--black);
+}
+.card-container article {
+  padding: 20px 5px;
 }

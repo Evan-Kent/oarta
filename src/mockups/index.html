@@ -4,7 +4,6 @@
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
     <meta
       name="description"
       content="One Analytics to Rule Them All"
@@ -16,20 +15,63 @@
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <link rel="stylesheet" href="../index.css" />
-    <title>React App</title>
+    <script src="https://kit.fontawesome.com/e3bc8cc876.js" crossorigin="anonymous"></script>
+    <title>oarta - One Analytics to Rule Them All</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root">
-      <section class="navigation">
+      <nav class="navigation">
         <section class="home">
-          <img class="logo" src="../../public/thering.png">
-          <span class="title">OARTA</span>
+          <a class="title">OARTA</a>
+          <a href="#"><img class="logo" src="../images/thering.png"></a>
+
         </section>
-      </section>
-      <section class="app-canvas">
+        <ul>
+          <li>
+            <a href="#">Dashboard</a>
+            <span class="nav-icon"><i class="fas fa-chart-line"></i></span>
+          </li>
+          <li>
+            <a href="#">Widgets</a>
+            <span class="nav-icon"><i class="fas fa-cogs"></i></span>
+          </li>
+          <li>
+            <a href="#">Settings</a>
+            <span class="nav-icon"><i class="fas fa-user"></i></span>
+          </li>
+        </ul>
+      </nav>
+      <main class="app-canvas">
         <h1>Main Canvas</h1>
-      </section>
+        <section class="login-card">
+          <div class="card-container">
+            <img class="logo" src="../images/thering.png">
+            <h2>OARTA SIGN IN</h2>
+            <form action="#">
+              <input type="text" placeholder="Enter Username">
+              <button type="submit">Next</button> 
+            </form>
+          </div>
+          <a class="forgot-link" href="#">Forgot Username?</a>
+        </section>
+        <section class="card">
+          <div class="card-container" draggable="true">
+            <header>
+              <h3>Card Title</h3>
+              <div>
+                <button class="config"><i class="fas fa-cog"></i></button>
+                <button class="config"><i class="fas fa-times"></i></button>
+              </div>
+            </header>
+            <article>
+              <canvas id="aChart" aria-label="donut chart" role="img"></canvas>
+            </article>
+          </div>
+        </section>
+      </main>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+    <script type="text/javascript" src="donut.js"></script>
   </body>
 </html>
