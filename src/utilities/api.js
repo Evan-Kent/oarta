@@ -1,24 +1,11 @@
-function json(response) { return response.json() }
-
-function status(response) 
-{
-  if (response.status >= 200 && response.status <= 300)
-    return Promise.resolve(response)
-  else return Promise.reject(new Error(response.statusText))
-}
-
-function get(resource) {
+async function get(resource) {
   const auth = { 'Authorization': `Bearer ${process.env.REACT_APP_LOTR_API_KEY}` }
   const url = 'https://the-one-api.herokuapp.com/v1'
-  return new Promise((resolve, reject) => {
-    fetch(url + resource, { method: 'GET', headers: auth })
-      .then(status)
-      .then(json)
-      .then(
-        data => resolve(data),
-        error => reject(error)
-      )
-  })
+  let data = await fetch(url + resource, { method: 'GET', headers: auth })
+      .then(res => res.json())
+  let results = data.results
+  console.log(data)
+  return results
 }
 
 async function getBooks(setBooks) {
@@ -36,7 +23,7 @@ async function getBookChapters(bookId)
 }
 
 async function getChapters(setChapters) {
-  setChapter(await get(`/chapter`))
+  setChapters(await get(`/chapter`))
 }
 
 async function getChapter(id)

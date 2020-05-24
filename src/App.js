@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-//import logo from './logo.svg';
-import thering from './thering.png';
 import './App.css';
 import api from './utilities/api';
+import { Navigation } from './components'
 
 function App() {
   const [books, setBooks] = useState(null)
@@ -16,38 +15,41 @@ function App() {
     let ignore = false;
     if (!ignore) 
     {
-      api.getBooks(setBooks)
-      api.getChapters(setChapters)
-      api.getCharacters(setCharacters)
-      api.getMovies(setMovies)
+      // api.getBooks(setBooks)
+      // api.getChapters(setChapters)
+      // api.getCharacters(setCharacters)
+      //api.getMovies(setMovies)
       api.getQuotes(setQuotes)
     }
     return () => { ignore = true; }
   }, [])
   
-  if (movies)
+  if (quotes)
   {
-    console.log(movies)
+    console.log(quotes)
   }
   return (
     <div className="App">
       <header className="App-header">
-        <img src={thering} className="App-logo" alt="logo" />
+        <Navigation />
+      </header>
+      <section>
+        <img src={'thering192.png'} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <div>
           <ul>
             {
-              movies.map(movie => {
+              movies ? movies.docs.map(movie => {
                 return <li>
-
+                  
                 </li>
-              })
+              }) : ''
             }
           </ul>
         </div>
-      </header>
+      </section>
     </div>
   );
 }
