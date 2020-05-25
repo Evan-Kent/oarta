@@ -3,12 +3,12 @@
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
 
 :root {
-  --black: #02111B;
-  --grey: #313638;
+  --black: rgb(2, 18, 28);
+  --grey: rgb(49, 54, 56);
   --sunny: rgb(255, 224, 132);
-  --bluegreen: #9EEEE0;
-  --platinum: #E5F5D7;
-  --darkgreen: #106420;
+  --bluegreen: rgb(158, 238, 224);
+  --platinum: rgb(229, 245, 215);
+  --darkgreen: rgb(16, 100, 32);
 
 }
 
@@ -87,12 +87,17 @@ body {
 
 .app-canvas
 {
-  background: radial-gradient(circle at 90% 90%, var(--bluegreen), transparent 100%),
-      radial-gradient(circle at 25% 25%, var(--bluegreen), transparent 100%),
-      radial-gradient(circle at 50% 50%, rgba(0,0,0), transparent 100%);
+  background: radial-gradient(circle at 90% 90%, rgba(158, 238, 224, .99), transparent 100%),
+      radial-gradient(circle at 25% 25%,  rgba(158, 238, 224, .95), transparent 100%),
+      radial-gradient(circle at 50% 50%, rgba(0,0,0, 1), transparent 100%),
+      url(https://images.unsplash.com/photo-1490440101319-4c8eb3880432?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80) 
+      no-repeat center center fixed; 
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
   padding-left: 150px;
   min-height: 100vh;
-  height: 300vh;
   overflow: hidden;
   display:flex;
   flex-flow: column nowrap;
@@ -138,6 +143,7 @@ body {
 
 /* Login Card */
 .login-card {
+  margin-top: 20vh;
   padding-top: 25px;
   text-align: center;
 }
@@ -182,6 +188,7 @@ body {
 }
 
 .login-card button[type=submit] {
+  border-radius: 0;
   border: 5px solid var(--sunny);
   display: block;
   padding: 10px 70px;
@@ -218,7 +225,7 @@ body {
   -khtml-user-drag: element;
   -webkit-user-drag: element;
   border: 1px solid var(--grey);
-  background-color: white;
+  background-color: rgba(255,255,255,.5);
   padding: 5px;
 }
 .card-container header {
