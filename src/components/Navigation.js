@@ -2,9 +2,11 @@ import React from 'react'
 import logo from "../images/thering.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChartLine, faCogs, faUser } from '@fortawesome/free-solid-svg-icons'
+import { DashboardList } from './Dashboard'
+import { WidgetList } from './Widget'
+import Account from './Account'
 
-
-function Navigation()
+function Navigation({ currentApp })
 {
   return (
     <nav className="navigation">
@@ -14,15 +16,15 @@ function Navigation()
       </section>
       <ul>
         <li>
-          <a href="#">Dashboard</a>
+          <a href="#" onClick={() => currentApp(<DashboardList />)}>Dashboard</a>
           <span className="nav-icon"><FontAwesomeIcon icon={faChartLine} /></span>
         </li>
         <li>
-          <a href="#">Widgets</a>
+          <a href="#" onClick={() => currentApp(<WidgetList />)}>Widgets</a>
           <span className="nav-icon"><FontAwesomeIcon icon={faCogs} /></span>
         </li>
         <li>
-          <a href="#">Settings</a>
+          <a href="#" onClick={() => currentApp(<Account />)}>Settings</a>
           <span className="nav-icon"><FontAwesomeIcon icon={faUser} /></span>
         </li>
       </ul>

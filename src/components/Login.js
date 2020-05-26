@@ -44,7 +44,11 @@ function Login({ setAuth }) {
     <section className="login-card">
       <div className="card-container">
         <img className="logo" alt="OARTA Logo" src={logo} />
-        <h2>OARTA SIGN IN</h2>
+        <h2>{ 
+          isPass ?
+          `Hi, ${username}!` :
+          `OARTA SIGN IN`
+        }</h2>
         <form action="#">
           { inputType }
           <button type="submit" onClick={(e) => handleSubmit(e)}>

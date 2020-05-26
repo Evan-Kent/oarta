@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-
-import { Navigation, Canvas, Login } from './components'
+import defaultDashboards from './utilities/default-dashboard'
+import { Navigation, DashboardList, Login } from './components'
 
 function App() {
   // const [books, setBooks] = useState(null)
@@ -24,15 +24,15 @@ function App() {
   //   return () => { ignore = true; }
   // }, [])
   const [authenticated, setAuthenticated] = useState(false)
-
-  let app = authenticated ? <Canvas /> : <Login setAuth={value => setAuthenticated(value)}/>
+  const [app, setApp] = useState(<DashboardList dashboards={defaultDashboards}/>)
+  let _app = authenticated ? app : <Login setAuth={ value => setAuthenticated(value) }/>
   console.log(app)
   return (
     <>
-      { authenticated ? <Navigation /> : ''}
+      { authenticated ? <Navigation currentApp={ app => setApp(app) }/> : ''}
       <main className="app-canvas">
       {
-        app
+        _app
       }
       </main>
     </>
