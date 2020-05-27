@@ -57,7 +57,7 @@ function Login({ setAuth }) {
         </form>
       </div>
       <a className="forgot-link" href="#">
-        Forgot Username?
+        { isPass ? "Forgot Password?" : "Forgot Username?" }
       </a>
     </section>
   )

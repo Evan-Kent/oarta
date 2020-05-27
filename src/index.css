@@ -1,6 +1,7 @@
 @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
 @import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+@import url(normalize.css);
 
 :root {
   --black: rgb(2, 18, 28);
@@ -39,7 +40,6 @@ body {
   grid-area: nav;
   transition: all .45s cubic-bezier(0.8, 0, 0.175, 1);
   overflow: hidden;
-  cursor: pointer;
   box-shadow: 2px 2px 5px rgba(0,0,0,.6);
 }
 .navigation:hover {
@@ -66,6 +66,7 @@ body {
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
 }
 
 .navigation li .nav-icon {
@@ -77,10 +78,15 @@ body {
   color: var(--sunny);
 }
 
-.navigation li a {
+.navigation li button {
+  background: 0;
+  border: 0;
+  font-family: inherit;
+  font-size: 1em;
   color: var(--bluegreen);
+  cursor: pointer;
 }
-.navigation li:hover a {
+.navigation li:hover button {
   color: var(--sunny);
 }
 
@@ -96,8 +102,7 @@ body {
       -moz-background-size: cover;
       -o-background-size: cover;
       background-size: cover;
-  padding-left: 150px;
-  padding-right: 150px;
+
   min-height: 100vh;
   overflow: hidden;
   display:flex;
@@ -153,6 +158,8 @@ body {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+  box-shadow: 10px 10px 10px black;
+  margin-bottom: 5px;
 }
 .login-card .logo {
   height: 50px;
@@ -203,11 +210,51 @@ body {
 
 .login-card .forgot-link {
   text-decoration: none;
-  color: black;
+  color: var(--black);
   font-size: .75em;
 }
 .login-card .forgot-link:visited {
-  color: black;
+  color: var(--black);
+}
+
+/*****************    DASHBOARD   ***************/
+
+.dashboard-list-container {
+
+}
+
+.dashboard-list {
+  background-color: rgba(255,255,255,.5);
+  padding-top: 25px;
+  border-bottom: 1px solid white;
+  padding-left: 170px;
+  padding-right: 150px;
+}
+
+.dashboard-list button {
+  font-family: inherit;
+  font-size: 1.3em;
+  color: var(--grey);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border: 1px solid white;
+  border-bottom: 0;
+  padding: 10px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.dashboard-list .active {
+  background-color: white;
+  border-bottom: 1px solid white;
+}
+
+.dashboard {
+  padding-left: 150px;
+  padding-right: 150px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: left;
 }
 
 /* App card */
@@ -262,8 +309,7 @@ body {
 
 @media all and (min-width: 601px) {
   .app-canvas {
-    padding-left: 150px;
-    padding-right: 150px;
+
   }
 
   .login-card {

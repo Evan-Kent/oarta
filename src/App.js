@@ -24,15 +24,14 @@ function App() {
   //   return () => { ignore = true; }
   // }, [])
   const [authenticated, setAuthenticated] = useState(false)
-  const [app, setApp] = useState(<DashboardList dashboards={defaultDashboards}/>)
-  let _app = authenticated ? app : <Login setAuth={ value => setAuthenticated(value) }/>
-  console.log(app)
+  const [app, setApp] = useState(<DashboardList />)
+
   return (
     <>
       { authenticated ? <Navigation currentApp={ app => setApp(app) }/> : ''}
       <main className="app-canvas">
       {
-        _app
+        authenticated ? app : <Login setAuth={ value => setAuthenticated(value) }/>
       }
       </main>
     </>

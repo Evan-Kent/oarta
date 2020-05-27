@@ -16,15 +16,15 @@ function Navigation({ currentApp })
       </section>
       <ul>
         <li>
-          <a href="#" onClick={() => currentApp(<DashboardList />)}>Dashboard</a>
+          <button onClick={() => currentApp(<DashboardList />)}>Dashboard</button>
           <span className="nav-icon"><FontAwesomeIcon icon={faChartLine} /></span>
         </li>
         <li>
-          <a href="#" onClick={() => currentApp(<WidgetList />)}>Widgets</a>
+          <button onClick={() => currentApp(<WidgetList />)}>Widgets</button>
           <span className="nav-icon"><FontAwesomeIcon icon={faCogs} /></span>
         </li>
         <li>
-          <a href="#" onClick={() => currentApp(<Account />)}>Settings</a>
+          <button onClick={() => currentApp(<Account />)}>Settings</button>
           <span className="nav-icon"><FontAwesomeIcon icon={faUser} /></span>
         </li>
       </ul>
