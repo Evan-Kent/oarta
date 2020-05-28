@@ -28,11 +28,12 @@ DashboardList.defaultProps = {
 }
 
 function Dashboard({ data }) {
+  console.log("In Dashboard")
   console.log(data)
   return (
     <div className="dashboard">
       {
-        data.widgets.map(widget => <Widget settings={widget} />)
+        data.widgets.map((widget, i) => <Widget key={i} settings={widget.settings} data={widget.data} />)
       }
     </div>
   )
