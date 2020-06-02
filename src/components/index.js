@@ -3,14 +3,15 @@ import Login from './Login'
 import { Dashboard, DashboardList } from './Dashboard'
 import { Widget, WidgetList } from './Widget'
 import Account from './Account'
-
+import Api from './Api'
 
 export {
+  Api,
   Account,
-  Navigation,
-  Login,
   Dashboard,
   DashboardList,
+  Login,
+  Navigation,
   Widget,
   WidgetList
 }

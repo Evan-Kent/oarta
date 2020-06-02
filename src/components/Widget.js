@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Suspense } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCog, faTimes } from '@fortawesome/free-solid-svg-icons'
 import Chart from 'chart.js'
+import { ChartArea } from './ChartArea'
 
 function WidgetList()
 {
@@ -13,8 +14,8 @@ function WidgetList()
 
 function Widget({ settings, data, options })
 {
-  console.log(settings)
-  console.log(data)
+  const [characters, setCharacters] = useState(null)
+
   useEffect(() => {
     if (settings !== null && data !== null) {
       let chart = new Chart (document.getElementById(`${settings.name}`), {
@@ -30,9 +31,9 @@ function Widget({ settings, data, options })
           }]
         },
         options: options,
-      });
+      })
     }
-  })
+  }, [data, options, settings])
 
   return (
     <section className="card">
@@ -44,9 +45,7 @@ function Widget({ settings, data, options })
           <button className="config"><FontAwesomeIcon icon={faTimes} /></button>
         </div>
       </header>
-      <article>
-        <canvas id={settings.name} aria-label="donut chart" role="img"></canvas>
-      </article>
+      <ChartArea name={settings.name} type={settings.type} />
     </div>
   </section>
   )

@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import defaultDashboards from '../utilities/default-dashboard'
 import { Widget } from './Widget'
+import api from "../utilities/api";
+
 
 function DashboardList({ dashboards }) {
   let [currentDashboard, setCurrentDashboard] = useState(0);
@@ -28,8 +30,6 @@ DashboardList.defaultProps = {
 }
 
 function Dashboard({ data }) {
-  console.log("In Dashboard")
-  console.log(data)
   return (
     <div className="dashboard">
       {

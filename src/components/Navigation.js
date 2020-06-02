@@ -6,7 +6,7 @@ import { DashboardList } from './Dashboard'
 import { WidgetList } from './Widget'
 import Account from './Account'
 
-function Navigation({ currentApp })
+function Navigation({ setApp })
 {
   return (
     <nav className="navigation">
@@ -16,15 +16,15 @@ function Navigation({ currentApp })
       </section>
       <ul>
         <li>
-          <button onClick={() => currentApp(<DashboardList />)}>Dashboard</button>
+          <button onClick={() => setApp(<DashboardList />)}>Dashboard</button>
           <span className="nav-icon"><FontAwesomeIcon icon={faChartLine} /></span>
         </li>
         <li>
-          <button onClick={() => currentApp(<WidgetList />)}>Widgets</button>
+          <button onClick={() => setApp(<WidgetList />)}>Widgets</button>
           <span className="nav-icon"><FontAwesomeIcon icon={faCogs} /></span>
         </li>
         <li>
-          <button onClick={() => currentApp(<Account />)}>Settings</button>
+          <button onClick={() => setApp(<Account />)}>Settings</button>
           <span className="nav-icon"><FontAwesomeIcon icon={faUser} /></span>
         </li>
       </ul>

@@ -3,13 +3,12 @@ async function get(resource) {
   const url = 'https://the-one-api.herokuapp.com/v1'
   let data = await fetch(url + resource, { method: 'GET', headers: auth })
       .then(res => res.json())
-  let results = data.results
-  console.log(data)
-  return results
+
+  return data
 }
 
 async function getBooks(setBooks) {
-  setBooks(await get('/book'))
+  setBooks(await get('/book').then(data => data.docs))
 }
 
 async function getBook(id)
@@ -19,11 +18,11 @@ async function getBook(id)
 
 async function getBookChapters(bookId)
 {
-  return await get(`/book/${bookId}/chapter`)
+  return await get(`/book/${bookId}/chapter`).then(data => data.docs)
 }
 
 async function getChapters(setChapters) {
-  setChapters(await get(`/chapter`))
+  setChapters(await get(`/chapter`).then(data => data.docs))
 }
 
 async function getChapter(id)
@@ -32,7 +31,7 @@ async function getChapter(id)
 }
 
 async function getCharacters(setCharacters) {
-  setCharacters(await get(`/character`))
+  setCharacters(await get(`/character`).then(data => data.docs))
 }
 
 async function getCharacter(id)
@@ -42,11 +41,11 @@ async function getCharacter(id)
 
 async function getCharacterQuotes(characterId)
 {
-  return await get(`/character/${characterId}/quote`)
+  return await get(`/character/${characterId}/quote`).then(data => data.docs)
 }
 
 async function getMovies(setMovies) {
-  setMovies(await get('/movie'))
+  setMovies(await get('/movie').then(data => data.docs))
 }
 
 async function getMovie(id)
@@ -56,11 +55,11 @@ async function getMovie(id)
 
 async function getMovieQuotes(movieId)
 {
-  return await get(`/movie/${movieId}/quote`)
+  return await get(`/movie/${movieId}/quote`).then(data => data.docs)
 }
 
 async function getQuotes(setQuotes) {
-  setQuotes(await get('/quote'))
+  setQuotes(await get('/quote').then(data => data.docs))
 }
 
 async function getQuote(id)
