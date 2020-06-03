@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import defaultDashboards from '../utilities/default-dashboard'
 import { Widget } from './Widget'
-import api from "../utilities/api";
 
 
 function DashboardList({ dashboards, data }) {

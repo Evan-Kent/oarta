@@ -3,8 +3,6 @@ import Chart from 'chart.js'
 
 function HorizontalBarChart({ settings, data })
 {
-  console.log(settings)
-  console.log(data)
   useEffect(() => {
     if (settings && data)
     {
@@ -42,14 +40,18 @@ function StackedBarChart({ settings, data })
       let barSettings = {
         type: settings.type,
         data: {
-          labels: data,
+          labels: data.map(movie => movie.name),
           datasets: [{
             label: 'Nominations',
-            data: Object.values(data)
-          },
-            
-          ]
-        }
+            backgroundColor: "rgb(121, 206, 226)",
+            data: data.map(movie => movie.nominations)
+          },{
+            label: 'Awards',
+            backgroundColor: "rgb(255, 198, 255)",
+            data: data.map(movie => movie.wins)
+          }]
+        },
+        options: settings.options
       }
       let chart = new Chart (document.getElementById(`${settings.name}`), barSettings)
     }
@@ -64,7 +66,25 @@ function StackedBarChart({ settings, data })
 
 function DoughnutChart({ settings, data })
 {
-
+  useEffect(() => {
+    if (settings && data)
+    {
+      let doughnutSettings = {
+        type: settings.type,
+        data: {
+          labels: Object.keys(data.gender),
+          datasets: [{
+            label: 'Gender',
+            backgroundColor,
+            borderColor,
+            data: Object.values(data.gender)
+          }]
+        },
+        options: settings.options
+      }
+      let chart = new Chart (document.getElementById(`${settings.name}`), doughnutSettings)
+    }
+  })
   return (
     <article>
       <canvas id={settings.name} aria-label="donut chart" role="img"></canvas>

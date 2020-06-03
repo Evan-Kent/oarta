@@ -62,6 +62,7 @@ function charactersByGenderRace(characters)
       else race.Other++
       return race
     }, { Ainur: 0, Dwarf: 0, Elf: 0, Hobbit: 0, Human: 0, Orc: 0, Other: 0 })
+  console.log({ gender, race })
   return { gender, race }
   //const gender = { Male: 0, Female: 0 }
   // const race

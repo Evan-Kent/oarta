@@ -252,7 +252,7 @@ body {
 /* App card */
 .card {
   margin: 20px;
-  width: 400px;
+  width: 550px;
 }
 .card .card-container {
   -moz-user-select: none;

@@ -44,15 +44,22 @@ export default [
       }, 
       {
         settings: {
-          name: "Gimli",
-          type: "line",
-          chartOptions: {
-            legend: {
-              position: "bottom",
+          name: "Character Gender",
+          type: "doughnut",
+          options: {
+            title: {
+              display: false
             },
+            responsive: true,
+            legend: {
+              position: "top",
+            },
+            animation: {
+              animateScale: true,
+              animateRotate: true
+            }
           }
-        },
-        data : {red: 1, blue: 2, green: 3}
+        }
       }
     ]
   },
