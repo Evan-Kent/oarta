@@ -4,34 +4,42 @@ export default [
     widgets: [
       {
         settings: {
-          name: "Boromir",
-          type: "doughnut",
-          chartOptions: {
+          name: "Quotes Per Character",
+          type: "horizontalBar",
+          options: {
+            responsive: true,
+            title: { display: false },
             legend: {
-              position: "bottom",
+              position: 'bottom',
             }
           }
-        },
-        data : {red: 1, blue: 2, green: 3}
+        }
       }, 
       {
         settings: {
-          name: "Legolas",
+          name: "Movie Awards",
           type: "bar",
-          chartOptions: {
+          options: {
+            responsive: true,
             legend: {
               position: "bottom",
             },
+            tooltips: {
+              mode: 'index',
+              intersect: false
+            },
+            title: {
+              display: false
+            },
+            scales: {
+              xAxes: [{
+                stacked: true,
+              }],
+              yAxes: [{
+                stacked: true
+              }]
+            }
           }
-        },
-        data : {
-          blue: 21,
-          yellow: 11,
-          red: 4,
-          teal: 18,
-          purple: 9,
-          orange: 9,
-          unknown: 4,
         }
       }, 
       {
@@ -46,7 +54,8 @@ export default [
         },
         data : {red: 1, blue: 2, green: 3}
       }
-    ]},
+    ]
+  },
   { 
     name: "Movies", 
     widgets: [
@@ -62,5 +71,6 @@ export default [
       {
         name: "The Desolation of Smaug"
       }
-    ]},
+    ]
+  },
 ];

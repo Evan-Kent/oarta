@@ -11,7 +11,7 @@ function App() {
       { authenticated ? <Navigation setApp={ app => setApp(app) }/> : ''}
       <main className="app-canvas">
       {
-        authenticated ? <Api>{app}</Api> : <Login setAuth={ value => setAuthenticated(value) }/>
+        authenticated ? <Api key={app.type}>{app}</Api> : <Login setAuth={ value => setAuthenticated(value) }/>
       }
       </main>
     </>

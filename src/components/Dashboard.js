@@ -4,7 +4,7 @@ import { Widget } from './Widget'
 import api from "../utilities/api";
 
 
-function DashboardList({ dashboards }) {
+function DashboardList({ dashboards, data }) {
   let [currentDashboard, setCurrentDashboard] = useState(0);
 
   return (
@@ -20,7 +20,7 @@ function DashboardList({ dashboards }) {
           </button>
         ))}
       </section>
-      <Dashboard data={ defaultDashboards[currentDashboard] } />
+      <Dashboard data={data} widgets={ defaultDashboards[currentDashboard].widgets } />
     </div>
   );
 }
@@ -29,11 +29,11 @@ DashboardList.defaultProps = {
   dashboards : defaultDashboards
 }
 
-function Dashboard({ data }) {
+function Dashboard({ data, widgets }) {
   return (
     <div className="dashboard">
       {
-        data.widgets.map((widget, i) => <Widget key={i} settings={widget.settings} data={widget.data} />)
+        widgets.map((widget, i) => <Widget key={i} settings={widget.settings} data={data[i]} />)
       }
     </div>
   )

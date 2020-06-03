@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import api from "../utilities/api";
 import { Quote } from '../models'
-import { faMapSigns } from "@fortawesome/free-solid-svg-icons";
 
 
 function Api({ children })
@@ -23,14 +22,10 @@ function Api({ children })
     if (allDataSet())
     {
       console.log("All data set!")
-      console.log(books)
-      console.log(characters)
-      console.log(movies)
-
       let movieAwards = awardsPerMovie(movies)
       let quotesPerCharacter = dataQuotesPerCharacter(quotes, characters)
       let characterGenderRace = charactersByGenderRace(characters)
-      const data = { quotesPerCharacter, movieAwards, characterGenderRace }
+      const data = [ quotesPerCharacter, movieAwards, characterGenderRace ]
       setChildrenWithData(
         React.Children.map(
           children, 
@@ -40,7 +35,6 @@ function Api({ children })
   }, [books, characters, movies, quotes])
 
   const allDataSet = () => books && characters && movies && quotes
-  
 
   return ( 
     <>
@@ -68,7 +62,6 @@ function charactersByGenderRace(characters)
       else race.Other++
       return race
     }, { Ainur: 0, Dwarf: 0, Elf: 0, Hobbit: 0, Human: 0, Orc: 0, Other: 0 })
-  console.log({ gender, race })
   return { gender, race }
   //const gender = { Male: 0, Female: 0 }
   // const race
@@ -93,11 +86,14 @@ function awardsPerMovie(movies)
 
 function dataQuotesPerCharacter(quotesData, characters)
 {
+  // generate a lookup Map for character ids/names
   const idxCharacters = characters.reduce(
     (chars, char) => 
       chars.set(char._id, char), 
       new Map())
   const quotes = quotesData.map(q => new Quote(q))
+  
+  // process the quotes and add in the character names
   let quotesPerCharacter = {}
   for (let quote of quotes)
   {
@@ -105,5 +101,10 @@ function dataQuotesPerCharacter(quotesData, characters)
     if (!quotesPerCharacter[c.name]) quotesPerCharacter[c.name] = 1
     else quotesPerCharacter[c.name]++
   }
+
+  // trim it up a bit
+  for (let [key, value] of Object.entries(quotesPerCharacter))
+    if (value < 50) delete quotesPerCharacter[key]
+  delete quotesPerCharacter.MINOR_CHARACTER
   return quotesPerCharacter
 }
