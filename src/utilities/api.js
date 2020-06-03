@@ -1,4 +1,5 @@
 async function get(resource) {
+  console.log(process.env.REACT_APP_LOTR_API_KEY)
   const auth = { 'Authorization': `Bearer ${process.env.REACT_APP_LOTR_API_KEY}` }
   const url = 'https://the-one-api.herokuapp.com/v1'
   let data = await fetch(url + resource, { method: 'GET', headers: auth })
